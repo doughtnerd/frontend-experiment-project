@@ -2,11 +2,11 @@ import { AbstractFormControlConfig, Form } from '@doughtnerd/qwizard-react'
 import { withProviders } from '@doughtnerd/wrangler-di'
 import { useState, useEffect } from 'react'
 import type { useNavigate } from 'react-router-dom'
-import { API_INJECTION_TOKEN, IIntelageApi } from '../services/api/intelage-api.interface'
+import { API_INJECTION_TOKEN, IIntelageApi } from '../../services/api/intelage-api.interface'
 import {
     ISubmissionStore,
     SUBMISSION_STORE_INJECTION_TOKEN,
-} from '../services/submission-store/submission-store.interface'
+} from '../../services/submission-store/submission-store.interface'
 
 export type FormPageProps = {
     deps: [IIntelageApi, typeof useNavigate, ISubmissionStore]

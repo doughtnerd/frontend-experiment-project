@@ -5,6 +5,7 @@ export type SubmissionStoreState = {
 export const defaultSubmissionStoreState: SubmissionStoreState = {
     submissions: [
         {
+            id: '123',
             name: {
                 firstName: 'Chris',
                 lastName: 'Carlson',

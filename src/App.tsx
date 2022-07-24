@@ -1,8 +1,8 @@
 import { Provider, withInjector } from '@doughtnerd/wrangler-di'
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import { FormPage } from './pages/form-page.component'
-import { ThankYouPage } from './pages/thank-you-page.component'
+import { FormPage } from './pages/form-page/form-page.component'
+import { ThankYouPage } from './pages/thank-you-page/thank-you-page.component'
 import { API_INJECTION_TOKEN } from './services/api/intelage-api.interface'
 import { IntelageApi } from './services/api/intelage-api.service'
 import {
@@ -50,12 +50,6 @@ const appProviders: Provider[] = [
     },
 ]
 
-const Header = styled.header`
-    background-color: #282c34;
-    height: 64px;
-    width: 100%;
-`
-
 const ViewContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -65,19 +59,14 @@ const ViewContainer = styled.div`
 
 function App() {
     return (
-        <div className="App">
-            <Header>
-                <span>Intelage</span>
-            </Header>
-            <ViewContainer>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<FormPage onSubmitRedirectTo="/thank-you" />} />
-                        <Route path="/thank-you" element={<ThankYouPage />} />
-                    </Routes>
-                </BrowserRouter>
-            </ViewContainer>
-        </div>
+        <ViewContainer>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<FormPage onSubmitRedirectTo="/thank-you" />} />
+                    <Route path="/thank-you" element={<ThankYouPage />} />
+                </Routes>
+            </BrowserRouter>
+        </ViewContainer>
     )
 }
 

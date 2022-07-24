@@ -1,15 +1,30 @@
 import { withProviders } from '@doughtnerd/wrangler-di'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import styled from 'styled-components'
-import { SUBMISSION_STORE_INJECTION_TOKEN } from '../services/submission-store/submission-store.interface'
+import { SUBMISSION_STORE_INJECTION_TOKEN } from '../../services/submission-store/submission-store.interface'
 
 export function ThankYouPageBase({ deps }: any) {
     const [submissionStore] = deps
+    const [search] = useSearchParams()
+
+    const submissionId = search.get('submissionId')
+
+    const [submittedData, setSubmittedData] = useState<any>(null)
+
+    useEffect(() => {
+        if (submissionId) {
+            const submission = submissionStore.getSubmission(submissionId)
+            if (submission) {
+                setSubmittedData(submission)
+            }
+        }
+    }, [submissionId])
+
     return (
         <>
             <h1>Thank You</h1>
-            {submissionStore.getSubmissions().map((data: any) => {
-                return <Column>{formatData(Object.entries(data))}</Column>
-            })}
+            {submittedData && <Column>{formatData(Object.entries(submittedData))}</Column>}
         </>
     )
 }
@@ -42,14 +57,14 @@ function formatRecursive(data: Array<[string, {} | string]>, depth: number = 0):
             {data.map(([key, value]) => {
                 if (typeof value === 'string') {
                     return depth == 0 ? (
-                        <Row>
+                        <Row key={key}>
                             <Datapoint>{`${key}: ${value}`}</Datapoint>
                         </Row>
                     ) : (
-                        <Datapoint>{`${key}: ${value}`}</Datapoint>
+                        <Datapoint key={key}>{`${key}: ${value}`}</Datapoint>
                     )
                 }
-                return <Row>{formatRecursive(Object.entries(value), depth + 1)}</Row>
+                return <Row key={key}>{formatRecursive(Object.entries(value), depth + 1)}</Row>
             })}
         </>
     )

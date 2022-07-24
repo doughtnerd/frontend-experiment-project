@@ -1,8 +1,8 @@
 import { AbstractFormControlConfig, FormConfig } from '@doughtnerd/qwizard-react'
 import { act, fireEvent, render, RenderResult, waitFor } from '@testing-library/react'
-import { BasicInput } from '../components/form-elements/inputs/basic-input.component'
-import { IIntelageApi } from '../services/api/intelage-api.interface'
-import { ISubmissionStore } from '../services/submission-store/submission-store.interface'
+import { BasicInput } from '../../components/form-elements/inputs/basic-input.component'
+import { IIntelageApi } from '../../services/api/intelage-api.interface'
+import { ISubmissionStore } from '../../services/submission-store/submission-store.interface'
 import { FormPageBase, FormPageProps } from './form-page.component'
 
 class TestIntelageApi implements IIntelageApi {
