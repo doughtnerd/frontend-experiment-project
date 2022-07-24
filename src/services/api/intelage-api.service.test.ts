@@ -33,7 +33,7 @@ describe('IntelageAPIService', () => {
 
         const spy = jest.spyOn(httpClient, 'post').mockResolvedValue(Promise.resolve({}))
 
-        await intelageApi.submitFormData({})
-        expect(spy).toHaveBeenCalledWith('/api/submit-form-data', {})
+        await intelageApi.submitFormData({ id: '123' })
+        expect(spy).toHaveBeenCalledWith('/api/submit-form-data', { id: '123' })
     })
 })

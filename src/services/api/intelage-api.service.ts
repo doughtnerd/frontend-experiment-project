@@ -13,7 +13,7 @@ export class IntelageApi implements IIntelageApi {
         })
     }
 
-    submitFormData<T>(data: any): Promise<T> {
+    submitFormData<T>(data: { id: string } & {}): Promise<T> {
         return this.httpClient.post<T>('/api/submit-form-data', data)
     }
 }

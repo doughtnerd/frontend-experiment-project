@@ -18,5 +18,5 @@ export interface IIntelageApi {
      * Submits form data to our API.
      * @param data JSON data from the form to submit.
      */
-    submitFormData(data: any): Promise<any>
+    submitFormData(data: { id: string } & {}): Promise<any>
 }
