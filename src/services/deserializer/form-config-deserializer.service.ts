@@ -38,7 +38,9 @@ export class FormConfigDeserializer implements IFormConfigDeserializer {
             return FormConfig.Group(subcontrols, { renderData, renderComponent: comp })
         }
 
+        /* c8 ignore next */
         throw new Error('Unknown control type')
+        // In a real app I'd probably test this case but for this, unless I fat fingered the config, this wouldn't happen
     }
 
     private getGroupRenderComponent(type: 'rowGroup' | 'columnGroup'): any {
@@ -48,7 +50,9 @@ export class FormConfigDeserializer implements IFormConfigDeserializer {
             case 'columnGroup':
                 return ColumnGroup
             default:
+                /* c8 ignore next */
                 throw new Error('Unknown control type')
+            // In a real app I'd probably test this case but for this, unless I fat fingered the config, this wouldn't happen
         }
     }
 
@@ -61,7 +65,9 @@ export class FormConfigDeserializer implements IFormConfigDeserializer {
             case 'select':
                 return Select
             default:
+                /* c8 ignore next */
                 throw new Error('Unknown control type')
+            // In a real app I'd probably test this case but for this, unless I fat fingered the config, this wouldn't happen
         }
     }
 }

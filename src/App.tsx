@@ -1,5 +1,5 @@
 import { Provider, withInjector } from '@doughtnerd/wrangler-di'
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useNavigate, useSearchParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { FormPage } from './pages/form-page/form-page.component'
 import { ThankYouPage } from './pages/thank-you-page/thank-you-page.component'
@@ -12,6 +12,7 @@ import {
 import { FormConfigDeserializer } from './services/deserializer/form-config-deserializer.service'
 import { HTTP_CLIENT_INJECTION_TOKEN, IHttpClient } from './services/http/http-client.interface'
 import { HttpClient } from './services/http/http-client.service'
+import { USE_NAVIGATE_INJECTION_TOKEN, USE_PARAMS_INJECTION_TOKEN } from './services/routing-injection-tokens.constants'
 import { SUBMISSION_STORE_INJECTION_TOKEN } from './services/submission-store/submission-store.interface'
 import { SubmissionStore } from './services/submission-store/submission-store.service'
 
@@ -45,8 +46,12 @@ const appProviders: Provider[] = [
      * Could take it a step further and create an entire 'routing service' but that's a bit overkill.
      */
     {
-        provide: 'USE_NAVIGATE',
+        provide: USE_NAVIGATE_INJECTION_TOKEN,
         useValue: useNavigate,
+    },
+    {
+        provide: USE_PARAMS_INJECTION_TOKEN,
+        useValue: useSearchParams,
     },
 ]
 

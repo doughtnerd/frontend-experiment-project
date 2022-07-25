@@ -3,6 +3,7 @@ import { withProviders } from '@doughtnerd/wrangler-di'
 import { useState, useEffect } from 'react'
 import type { useNavigate } from 'react-router-dom'
 import { API_INJECTION_TOKEN, IIntelageApi } from '../../services/api/intelage-api.interface'
+import { USE_NAVIGATE_INJECTION_TOKEN } from '../../services/routing-injection-tokens.constants'
 import {
     ISubmissionStore,
     SUBMISSION_STORE_INJECTION_TOKEN,
@@ -78,6 +79,6 @@ function useFormLoader(api: IIntelageApi) {
  */
 export const FormPage = withProviders(FormPageBase, [
     API_INJECTION_TOKEN,
-    'USE_NAVIGATE',
+    USE_NAVIGATE_INJECTION_TOKEN,
     SUBMISSION_STORE_INJECTION_TOKEN,
 ])

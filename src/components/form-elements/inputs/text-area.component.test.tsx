@@ -1,10 +1,9 @@
 import { ValidationError } from '@doughtnerd/qwizard-core'
-import { fireEvent, render } from '@testing-library/react'
-import React, { ForwardedRef } from 'react'
-import { act } from 'react-dom/test-utils'
+import { render } from '@testing-library/react'
 import { TextArea, TextAreaProps } from './text-area.component'
 
 const defaultProps: TextAreaProps = {
+    id: 'testInput',
     inputRef: null,
     defaultValue: '',
     errors: {
@@ -40,5 +39,13 @@ describe('TextArea', () => {
         const { getByText } = render(<TextArea {...props} />)
 
         getByText('Test Error')
+    })
+
+    it('Sets aria required if field is required', () => {
+        const props = { ...defaultProps, required: true, labelText: 'Test Label' }
+        const { getByLabelText } = render(<TextArea {...props} />)
+
+        const input = getByLabelText('Test Label')
+        expect(input).toHaveAttribute('aria-required', 'true')
     })
 })

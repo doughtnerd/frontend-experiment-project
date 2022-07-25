@@ -1,51 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Select should render 1`] = `
+exports[`RowGroupComponent should render without errors 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
-        class="sc-bczRLJ gRuJCJ"
-      >
-        <label
-          class="sc-gsnTZi dcVdIj"
-          for="testInput"
-        />
-        <select
-          aria-invalid="false"
-          aria-required="false"
-          id="testInput"
-        />
-        <sub
-          class="sc-dkzDqf iaOukd"
-          hidden=""
-        >
-           
-        </sub>
-      </div>
+        class="sc-bczRLJ dZxnkP"
+      />
     </div>
   </body>,
   "container": <div>
     <div
-      class="sc-bczRLJ gRuJCJ"
-    >
-      <label
-        class="sc-gsnTZi dcVdIj"
-        for="testInput"
-      />
-      <select
-        aria-invalid="false"
-        aria-required="false"
-        id="testInput"
-      />
-      <sub
-        class="sc-dkzDqf iaOukd"
-        hidden=""
-      >
-         
-      </sub>
-    </div>
+      class="sc-bczRLJ dZxnkP"
+    />
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

@@ -9,7 +9,10 @@ export type TextAreaProps = WithInputRef<
 
 export function TextArea({ inputRef, defaultValue, errors, labelText, ...elementProps }: TextAreaProps): JSX.Element {
     const errorMessageMap = errors.errors
+
+    /* c8 ignore next */
     const errorsText = Object.values(errorMessageMap)?.[0]?.message
+    // Skipped because this is one of the TS issues with the library and is something I need to fix, likely by providing a different interface for accessing errors.
 
     return (
         <FormField style={{ display: 'flex', flexDirection: 'column', minHeight: '64px' }}>

@@ -3,6 +3,7 @@ import { fireEvent, render } from '@testing-library/react'
 import { Select, SelectProps } from './select.component'
 
 const defaultProps: SelectProps = {
+    id: 'testInput',
     inputRef: null,
     defaultValue: '',
     errors: {
@@ -56,5 +57,13 @@ describe('Select', () => {
 
         getByText('hello')
         getByText('test')
+    })
+
+    it('Sets aria required if field is required', () => {
+        const props = { ...defaultProps, required: true, labelText: 'Test Label' }
+        const { getByLabelText } = render(<Select {...props} />)
+
+        const input = getByLabelText('Test Label')
+        expect(input).toHaveAttribute('aria-required', 'true')
     })
 })

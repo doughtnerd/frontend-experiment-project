@@ -11,10 +11,12 @@ Object {
       >
         <label
           class="sc-gsnTZi dcVdIj"
+          for="testInput"
         />
         <textarea
           aria-invalid="false"
           aria-required="false"
+          id="testInput"
         />
         <sub
           class="sc-dkzDqf iaOukd"
@@ -32,10 +34,12 @@ Object {
     >
       <label
         class="sc-gsnTZi dcVdIj"
+        for="testInput"
       />
       <textarea
         aria-invalid="false"
         aria-required="false"
+        id="testInput"
       />
       <sub
         class="sc-dkzDqf iaOukd"

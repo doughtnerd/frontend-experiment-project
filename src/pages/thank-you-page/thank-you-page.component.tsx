@@ -1,7 +1,10 @@
 import { withProviders } from '@doughtnerd/wrangler-di'
 import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import type { useNavigate } from 'react-router-dom'
+import type { useNavigate, useSearchParams } from 'react-router-dom'
+import {
+    USE_NAVIGATE_INJECTION_TOKEN,
+    USE_PARAMS_INJECTION_TOKEN,
+} from '../../services/routing-injection-tokens.constants'
 import {
     ISubmissionStore,
     SUBMISSION_STORE_INJECTION_TOKEN,
@@ -9,11 +12,11 @@ import {
 import { Column, Datapoint, Row } from './thank-you-page.styled'
 
 export type ThankYouPageProps = {
-    deps: [ISubmissionStore, typeof useNavigate]
+    deps: [ISubmissionStore, typeof useNavigate, typeof useSearchParams]
 }
 
 export function ThankYouPageBase({ deps }: any) {
-    const [submissionStore, useNavigate] = deps
+    const [submissionStore, useNavigate, useSearchParams] = deps
     const [search] = useSearchParams()
     const navigate = useNavigate()
 
@@ -63,4 +66,8 @@ function formatRecursive(data: Array<[string, {} | string]>, depth: number = 0):
     )
 }
 
-export const ThankYouPage = withProviders(ThankYouPageBase, [SUBMISSION_STORE_INJECTION_TOKEN, 'USE_NAVIGATE'])
+export const ThankYouPage = withProviders(ThankYouPageBase, [
+    SUBMISSION_STORE_INJECTION_TOKEN,
+    USE_NAVIGATE_INJECTION_TOKEN,
+    USE_PARAMS_INJECTION_TOKEN,
+])
