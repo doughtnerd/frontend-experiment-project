@@ -28,11 +28,11 @@ Submission:
 
 Responsiveness:
 
--   Uses Flexbox wrapping for reactivity. Media queries would have been overkill for this but I suppose they would provide some additional UX niceties.
+-   Uses Flexbox wrapping for reactivity. Media queries would have been overkill for this but I suppose they would provide some additional UX niceties (if I wanted wrapping to occur earlier than what flexbox does by default for instance).
 
 Other:
 
--   Unit tested
+-   Unit tested, everything should pass with about 95% coverage. I did skip a couple lines here and there for cases where the code SHOULD never execute within this app or where coverage was reduced due to an interaction with my library that I need to fix (on the library side). Otherwise, the only file I skipped testing for was the http-client, since it's just a dummy client that doesn't actually make requests and was set up purely for demonstrative purposes.
 -   Some aria attributes added to form inputs but I didn't do a complete audit. Lighthouse seemed happy with it.
 -   Uses Redux. It's minimal but it's there.
 -   Uses styled-components for structural components.
