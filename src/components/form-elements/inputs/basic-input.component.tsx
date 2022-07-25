@@ -6,6 +6,13 @@ export type BasicInputProps = WithInputRef<
     InputHTMLAttributes<HTMLInputElement> & { labelText: string } & DefaultInputProps
 >
 
+/**
+ * Renders a basic input with a label and error message (if using custom validators).
+ * Input ref is needed for use with the `@doughtnerd/qwizard-react` library.
+ *
+ * @param param0
+ * @returns
+ */
 export function BasicInput({ inputRef, defaultValue, errors, labelText, ...inputProps }: BasicInputProps): JSX.Element {
     const errorMessageMap = errors.errors
     const errorsText = Object.values(errorMessageMap)?.[0]?.message

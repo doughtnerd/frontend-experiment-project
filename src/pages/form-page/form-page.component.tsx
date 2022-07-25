@@ -25,11 +25,14 @@ export function FormPageBase({ deps, onSubmitRedirectTo }: FormPageProps) {
     const handleFormSubmit = (e: CustomEvent) => {
         const [api] = deps
         const data = e.detail.formValue
+        const submissionId = Date.now().toString()
 
-        api.submitFormData({ id: Date.now().toString(), ...data })
+        const dataWithId = { id: submissionId, ...data }
+
+        api.submitFormData(dataWithId)
             .then(() => {
-                submissionStore.addSubmission(data)
-                navigate(onSubmitRedirectTo)
+                submissionStore.addSubmission(dataWithId)
+                navigate(onSubmitRedirectTo + `?submissionId=${submissionId}`)
             })
             .catch(() => {
                 console.error('Weird... You shouldnt be able to fail to submit the form...')

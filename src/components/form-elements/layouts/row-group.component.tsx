@@ -11,6 +11,6 @@ const FlexRow = styled.div`
     }
 `
 
-export function RowGroup({ children, type }: any) {
+export function RowGroup({ children }: any) {
     return <FlexRow>{children}</FlexRow>
 }

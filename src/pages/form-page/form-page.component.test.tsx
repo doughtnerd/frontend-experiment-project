@@ -97,6 +97,6 @@ describe('FormPage', () => {
         await waitFor(() => expect(spy).toHaveBeenCalledWith({ id: expect.any(String), firstName: 'Test' }))
 
         // The page should navigate after the form is submitted.
-        expect(mockNavigateFunc).toHaveBeenCalledWith('')
+        expect(mockNavigateFunc).toHaveBeenCalledWith(expect.any(String))
     })
 })

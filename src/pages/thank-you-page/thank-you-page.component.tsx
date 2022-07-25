@@ -1,12 +1,21 @@
 import { withProviders } from '@doughtnerd/wrangler-di'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import styled from 'styled-components'
-import { SUBMISSION_STORE_INJECTION_TOKEN } from '../../services/submission-store/submission-store.interface'
+import type { useNavigate } from 'react-router-dom'
+import {
+    ISubmissionStore,
+    SUBMISSION_STORE_INJECTION_TOKEN,
+} from '../../services/submission-store/submission-store.interface'
+import { Column, Datapoint, Row } from './thank-you-page.styled'
+
+export type ThankYouPageProps = {
+    deps: [ISubmissionStore, typeof useNavigate]
+}
 
 export function ThankYouPageBase({ deps }: any) {
-    const [submissionStore] = deps
+    const [submissionStore, useNavigate] = deps
     const [search] = useSearchParams()
+    const navigate = useNavigate()
 
     const submissionId = search.get('submissionId')
 
@@ -17,9 +26,11 @@ export function ThankYouPageBase({ deps }: any) {
             const submission = submissionStore.getSubmission(submissionId)
             if (submission) {
                 setSubmittedData(submission)
+                return
             }
         }
-    }, [submissionId])
+        navigate('/')
+    }, [submissionId, navigate, setSubmittedData, submissionStore])
 
     return (
         <>
@@ -28,24 +39,6 @@ export function ThankYouPageBase({ deps }: any) {
         </>
     )
 }
-
-const Row = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 4px 0;
-`
-
-const Column = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-`
-
-const Datapoint = styled.div`
-    display: flex;
-    padding: 0 8px;
-`
 
 function formatData(data: Array<[string, {} | string]>): JSX.Element {
     return formatRecursive(data, 0)
@@ -70,4 +63,4 @@ function formatRecursive(data: Array<[string, {} | string]>, depth: number = 0):
     )
 }
 
-export const ThankYouPage = withProviders(ThankYouPageBase, [SUBMISSION_STORE_INJECTION_TOKEN])
+export const ThankYouPage = withProviders(ThankYouPageBase, [SUBMISSION_STORE_INJECTION_TOKEN, 'USE_NAVIGATE'])

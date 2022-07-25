@@ -10,10 +10,12 @@ Object {
       >
         <label
           class="sc-gsnTZi dcVdIj"
+          for="testInput"
         />
         <input
           aria-invalid="false"
           aria-required="false"
+          id="testInput"
           value=""
         />
         <sub
@@ -31,10 +33,12 @@ Object {
     >
       <label
         class="sc-gsnTZi dcVdIj"
+        for="testInput"
       />
       <input
         aria-invalid="false"
         aria-required="false"
+        id="testInput"
         value=""
       />
       <sub

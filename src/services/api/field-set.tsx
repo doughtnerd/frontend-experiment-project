@@ -1,10 +1,3 @@
-import { AbstractFormControlConfig, FormConfig } from '@doughtnerd/qwizard-react'
-import { BasicInput } from '../../components/form-elements/inputs/basic-input.component'
-import { Select } from '../../components/form-elements/inputs/select.component'
-import { TextArea } from '../../components/form-elements/inputs/text-area.component'
-import { ColumnGroup } from '../../components/form-elements/layouts/column-group.component'
-import { RowGroup } from '../../components/form-elements/layouts/row-group.component'
-
 export const originalFieldSet = [
     [
         {
@@ -69,6 +62,15 @@ export const originalFieldSet = [
     },
 ]
 
+/**
+ * I cheat a little bit here with the `renderComponent = rowGroup/columnGroup` bit
+ * but I used this assignment as a way to experiment with a feature I want to add to the `@doughtnerd/qwizard-react` library (ie. json serialization)
+ *
+ * Nice thing about the library is it's a fully recursive data-structure. You can add fields, groups, etc and generate a form with whatever arbitrary nesting you want.
+ * This is probably pretty close to what my library would actually use.
+ *
+ * Also, I could use my own validators with this library but for the fields specified in the provided config, native browser validation works just as well.
+ */
 export const compatibleFieldSet = {
     controlType: 'group',
     renderData: {},
